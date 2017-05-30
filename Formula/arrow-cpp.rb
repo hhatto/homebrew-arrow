@@ -23,7 +23,7 @@ class ArrowCpp < Formula
     build_type = "Release"
     mkdir "#{build_type.downcase}"
     chdir "#{build_type.downcase}"
-    system "cmake .. -DCMAKE_BUILD_TYPE=#{build_type}"
+    system "cmake", "..", "-D", "CMAKE_BUILD_TYPE=#{build_type}", "-D", "CMAKE_INSTALL_PREFIX:PATH=#{prefix}"
     system "make unittest"
     system "make", "install"
   end
