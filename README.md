@@ -1,4 +1,4 @@
-## About
+## About [![Build Status](https://travis-ci.org/hhatto/homebrew-arrow.svg?branch=master)](https://travis-ci.org/hhatto/homebrew-arrow)
 homebrew for [Apache Arrow](https://arrow.apache.org/) [UNOFFICIAL]
 
 ## usage
