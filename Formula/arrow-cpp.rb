@@ -23,9 +23,7 @@ class ArrowCpp < Formula
     build_type = "Release"
     mkdir "#{build_type.downcase}"
     chdir "#{build_type.downcase}"
-    system "pwd"
     system "cmake .. -DCMAKE_BUILD_TYPE=#{build_type}"
-    #system "sleep 300"
     system "make unittest"
     system "make", "install"
   end
