@@ -1,0 +1,27 @@
+language: ruby
+
+matrix:
+    include:
+        - os: osx
+          osx_image: xcode8
+          env: ARROW_VERSION=stable
+        - os: osx
+          osx_image: xcode8
+          env: ARROW_VERSION=head
+        - os: osx
+          osx_image: xcode7.3
+          env: ARROW_VERSION=stable
+        - os: osx
+          osx_image: xcode7.3
+          env: ARROW_VERSION=head
+
+install:
+    - brew update
+
+script:
+    # - brew audit --strict ./Formula/*.rb
+    - if [ "$ARROW_VERSION" == "stable" ]; then
+        brew install --verbose --build-bottle ./Formula/*.rb;
+      else
+        brew install --verbose --build-bottle ./Formula/*.rb --HEAD;
+      fi
