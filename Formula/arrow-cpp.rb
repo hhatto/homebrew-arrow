@@ -28,13 +28,13 @@ class ArrowCpp < Formula
 
   test do
     (testpath/"test.cpp").write <<-EOS.undent
-#include "arrow/api.h"
+    #include "arrow/api.h"
 
-int main(void)
-{
-  arrow::Int64Builder builder(arrow::default_memory_pool(), arrow::int64());
-  return 0;
-}
+    int main(void)
+    {
+      arrow::Int64Builder builder(arrow::default_memory_pool(), arrow::int64());
+      return 0;
+    }
     EOS
     system ENV.cxx, "test.cpp", "-std=c++11", "-I#{prefix}/include", "-L#{lib}", "-larrow", "-o", "test"
     system "./test"
