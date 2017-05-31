@@ -11,18 +11,16 @@ class ArrowCpp < Formula
 
   def install
     env = ENV["PATH"]
-    new_env = Array.new
+    new_env = []
     env.split(":").each do |value|
-      if !value.include? "shims/super"
-        new_env.push value
-      end
+      new_env.push value unless value.include? "shims/super"
     end
     new_env.push "/usr/local/bin"
-    ENV.store 'PATH', new_env.join(":")
+    ENV.store "PATH", new_env.join(":")
     chdir "cpp"
     build_type = "Release"
-    mkdir "#{build_type.downcase}"
-    chdir "#{build_type.downcase}"
+    mkdir build_type.downcase
+    chdir build_type.downcase
     system "cmake", "-D", "CMAKE_BUILD_TYPE=#{build_type}", "-D", "CMAKE_INSTALL_PREFIX:PATH=#{prefix}", ".."
     system "make unittest"
     system "make", "install"
